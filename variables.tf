@@ -1,16 +1,16 @@
 variable "aws_region" {
   type        = string
-  description = "AWS region for all resources"
+  description = "us-east-1"
 }
 
 variable "state_bucket_name" {
   type        = string
-  description = "Name of existing S3 bucket to store Terraform state"
+  description = "v-backend-s3"
 }
 
 variable "lock_table_name" {
   type        = string
-  description = "Name of existing DynamoDB table for state locking"
+  description = "v-backend-db"
 }
 
 variable "vpc_cidr" {
