@@ -22,14 +22,16 @@ module "logs" {
 }
 
 module "ecs" {
-  source          = "./modules/ecs"
-  app_name        = var.app_name
-  cluster_name    = "${var.app_name}-cluster"
-  vpc_id          = module.network.vpc_id
-  subnet_ids      = module.network.public_subnet_ids
-  alb_sg_id       = module.security.alb_sg_id
-  ecs_sg_id       = module.security.ecs_sg_id
-  execution_role  = module.iam.execution_role_arn
-  log_group_name  = module.logs.log_group_name
-  container_port  = var.container_port
+  source           = "./modules/ecs"
+  aws_region       = var.aws_region           
+  app_name         = var.app_name
+  container_port   = var.container_port
+  execution_role   = var.execution_role
+  log_group_name   = var.log_group_name
+  alb_sg_id        = var.alb_sg_id
+  ecs_sg_id        = var.ecs_sg_id
+  subnet_ids       = var.subnet_ids
+  vpc_id           = var.vpc_id
+  cluster_name     = var.cluster_name
 }
+
